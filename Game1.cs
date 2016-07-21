@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Viluru.Utilities.Loging;
+
 
 namespace Testboard
 {
@@ -11,6 +13,10 @@ namespace Testboard
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        SpriteFont font;
+
+        int i;
 
         public Game1()
         {
@@ -28,6 +34,8 @@ namespace Testboard
         {
             // TODO: Add your initialization logic here
 
+          
+
             base.Initialize();
         }
 
@@ -40,7 +48,12 @@ namespace Testboard
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            font = Content.Load<SpriteFont>("default");
+
             // TODO: use this.Content to load your game content here
+
+
+            Viluru.Utilities.Loging.Helpers.INITLOG("lofgile.txt", true, true, true, this.font, this.spriteBatch);
         }
 
         /// <summary>
@@ -62,7 +75,9 @@ namespace Testboard
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            // TODO: Add your update logic 
+
+            i++;
 
             base.Update(gameTime);
         }
@@ -76,6 +91,8 @@ namespace Testboard
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
+            Viluru.Utilities.Loging.Helpers.LOG("I:  ", i);
 
             base.Draw(gameTime);
         }
